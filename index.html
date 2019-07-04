@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src='https://smtpjs.com/v3/smtp.js'></script>
+  </head>
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src='https://smtpjs.com/v3/smtp.js'>
-$(function(){$.get("https://www.tnagarlks.com/",function(data){
-var rate22k = $(data).find(".today-rate-dropdown tbody tr:nth-child(2) td:nth-child(2)").html();
-Email.send({    
-  SecureToken : '9de55cdf-36b2-40d8-9adc-695614ad0acd',    
-  To : 'vinoth.vinoj@gmail.com',    
-  From : 'vinpa9289@gmail.com',    
-  Subject : 'Today 22k Gold rate at LKS '+rate22k,    
-  Body : 'Today 22k Gold rate at LKS '+rate22k
-  }).then(message => alert(message));
-});
+<script>
+$(function(){
+  alert('1');
+  $.get("https://www.tnagarlks.com/",function(data){
+  var rate22k = $(data).find(".today-rate-dropdown tbody tr:nth-child(2) td:nth-child(2)").html();
+  alert(rate22k);
+  Email.send({    
+    SecureToken : '9de55cdf-36b2-40d8-9adc-695614ad0acd',    
+    To : 'vinoth.vinoj@gmail.com',    
+    From : 'vinpa9289@gmail.com',    
+    Subject : 'Today 22k Gold rate at LKS '+rate22k,    
+    Body : 'Today 22k Gold rate at LKS '+rate22k
+    }).then(message => alert(message));
   });
+});
 </script>
 </body>
 </html>
