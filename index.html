@@ -10,7 +10,7 @@
 <script>
 $(function(){
   alert('1');
-  $.get("https://www.tnagarlks.com/",function(data){
+  $.get("https://cors-anywhere.herokuapp.com/https://www.tnagarlks.com",function(data){
   var rate22k = $(data).find(".today-rate-dropdown tbody tr:nth-child(2) td:nth-child(2)").html();
   alert(rate22k);
   Email.send({    
