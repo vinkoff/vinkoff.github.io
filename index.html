@@ -10,7 +10,7 @@ var Email = { send: function (a) { return new Promise(function (n, e) { a.nocach
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
 <script>
-$(function(){
+function rateSender(){
   $.get("https://cors-anywhere.herokuapp.com/https://www.tnagarlks.com",function(data){
   var rate22k = $(data).find(".today-rate-dropdown tbody tr:nth-child(2) td:nth-child(2)").html();
   Email.send({    
@@ -21,7 +21,9 @@ $(function(){
     Body : 'Today 22k Gold rate at LKS '+rate22k
     });
   });
-});
+}
+  rateSender();
+  setInterval(rateSender,60000);
 </script>
 </body>
 </html>
