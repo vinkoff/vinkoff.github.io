@@ -10,20 +10,24 @@ var Email = { send: function (a) { return new Promise(function (n, e) { a.nocach
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
 <script>
+  var prevRate = 0;
 function rateSender(){
   $.get("https://cors-anywhere.herokuapp.com/https://www.tnagarlks.com",function(data){
   var rate22k = $(data).find(".today-rate-dropdown tbody tr:nth-child(2) td:nth-child(2)").html();
-  Email.send({    
+ if(prevRate!=rate22k){
+   prevRate=rate22k;
+  Email.send({   
     SecureToken : '9de55cdf-36b2-40d8-9adc-695614ad0acd',    
     To : 'vinoth.vinoj@gmail.com,karunkumar.cse@gmail.com',    
     From : 'vinpa9289@gmail.com',    
     Subject : 'Now 22k Gold rate at LKS '+rate22k,    
     Body : 'Now 22k Gold rate at LKS '+rate22k
     });
+  }
   });
 }
   rateSender();
-  setInterval(rateSender,18000000);
+  setInterval(rateSender,60000);
 </script>
 </body>
 </html>
