@@ -12,19 +12,26 @@ var Email = { send: function (a) { return new Promise(function (n, e) { a.nocach
 <script>
   var prevRate = 0;
 function rateSender(){
-  $.get("https://cors-anywhere.herokuapp.com/https://www.tnagarlks.com",function(data){
-  var rate22k = $(data).find(".today-rate-dropdown tbody tr:nth-child(2) td:nth-child(2)").html();
+
+var x = new XMLHttpRequest();
+x.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.tnagarlks.com/today-rate.php');
+x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+x.onload = function() {
+    
+	  var rate22k = $(x.responseText).find("tbody tr:nth-child(2) td:nth-child(2)").html();
  if(rate22k && rate22k.trim() !=='' && prevRate!=rate22k){
    prevRate=rate22k;
   Email.send({   
     SecureToken : '9de55cdf-36b2-40d8-9adc-695614ad0acd',    
-    To : 'vinoth.vinoj@gmail.com,karunkumar.cse@gmail.com,rtnselvam@gmail.com',    
+    To : 'vinoth.vinoj.india@gmail.com',    
     From : 'vinpa9289@gmail.com',    
     Subject : 'Now 22k Gold rate at LKS '+rate22k,    
     Body : 'Now 22k Gold rate at LKS '+rate22k
     });
   }
-  });
+};
+x.send();
+ 
 }
   rateSender();
   setInterval(rateSender,60000);
